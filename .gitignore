@@ -1,0 +1,30 @@
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage
+*.lcov
+
+# Build outputs
+build/
+dist/
+.next/
+.nuxt/
+dist/
+
+# Cache directories
+.cache
+.parcel-cache
+.eslintcache
+.nyc_output
+
+# IDE configurations
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
