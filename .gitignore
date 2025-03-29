@@ -29,5 +29,6 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Env files
+#Env files and node modules
+node_modules/
 *.env
