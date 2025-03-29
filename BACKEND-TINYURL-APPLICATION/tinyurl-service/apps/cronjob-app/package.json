@@ -1,0 +1,27 @@
+{
+  "name": "@tinyurl/cronjob-app",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "> TODO: description",
+  "author": "rahulkumar <rahulkr009@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@tinyurl/cronjob-app.test.js"
+  },
+  "dependencies": {
+    "@tinyurl/urls-lib": "file:../../libs/@tinyurl/urls-lib",
+    "node-cron": "^3.0.3"
+  }
+}
