@@ -1,0 +1,12 @@
+services:
+  service_one:
+    build: ./service_one
+    ports:
+      - 3000:3000
+
+  service_two:
+    build: ./service_two
+    ports:
+      - 3001:3001
+    depends_on:
+      - service_one
