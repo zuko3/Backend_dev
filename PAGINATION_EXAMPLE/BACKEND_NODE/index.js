@@ -2,6 +2,7 @@ import axios from "axios";
 import Fastify from "fastify";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import cors from "@fastify/cors";
 
 const fastify = Fastify({
   logger: true,
@@ -35,6 +36,10 @@ const swaggerUiOptions = {
 
 await fastify.register(fastifySwagger, swaggerOptions);
 await fastify.register(fastifySwaggerUi, swaggerUiOptions);
+await fastify.register(cors, {
+  origin: "*",
+  methods: ["GET"],
+});
 
 async function handlePagination(request, reply) {
   const {
