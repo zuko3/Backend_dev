@@ -6,12 +6,12 @@ export default fp(function (fastify, option, done) {
     const { validation, validationContext } = error;
 
     if (validation) {
-      global.log.error(`ERR_VALIDATION`, {
-        metadata: {
-          message: `A validation error occurred when validating the ${validationContext}`,
-        },
-        sendLog: true,
-      });
+      // global.log.error(`ERR_VALIDATION`, {
+      //   metadata: {
+      //     message: `A validation error occurred when validating the ${validationContext}`,
+      //   },
+      //   sendLog: true,
+      // });
 
       return reply.status(statusCode).send({
         statusCode,
@@ -21,10 +21,10 @@ export default fp(function (fastify, option, done) {
       });
     }
 
-    global.log.error(`ERR`, {
-      metadata: { message: error.message, statusCode },
-      sendLog: true,
-    });
+    // global.log.error(`ERR`, {
+    //   metadata: { message: error.message, statusCode },
+    //   sendLog: true,
+    // });
 
     reply.status(statusCode).send({
       statusCode: statusCode,

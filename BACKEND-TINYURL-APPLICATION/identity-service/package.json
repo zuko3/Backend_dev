@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start:dev": "node --env-file .development.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

@@ -8,7 +8,7 @@ export default async function (fastify) {
     url: "/ping",
     preHandler: [verifyApplicationUnitPreHandler],
     schema: healthCheckJsonSchema,
-    handler: async function (request, reply) {
+    handler: async function (_request, reply) {
       return reply.status(StatusCodes.OK).send({ message: ReasonPhrases.OK });
     },
   });

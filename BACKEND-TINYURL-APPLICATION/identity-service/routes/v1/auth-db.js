@@ -7,7 +7,7 @@ import { verifyApplicationUnitPreHandler } from "../../validator.js";
 export default async function (fastify) {
   fastify.route({
     method: "POST",
-    url: "/db/signup",
+    url: "/signup",
     preHandler: [verifyApplicationUnitPreHandler],
     schema: signupJsonSchema,
     handler: async function (request, reply) {
@@ -36,7 +36,7 @@ export default async function (fastify) {
 
   fastify.route({
     method: "POST",
-    url: "/db/login",
+    url: "/login",
     preHandler: [verifyApplicationUnitPreHandler],
     schema: loginJsonSchema,
     handler: async function (request, reply) {

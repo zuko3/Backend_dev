@@ -1,13 +1,16 @@
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import { validateTokenJsonSchema } from "../../schema.js";
-import { verifyApplicationUnitPreHandler } from "../../validator.js";
+import {
+  verifyApplicationUnitPreHandler,
+  verifyTokenPreHandler,
+} from "../../validator.js";
 
 export default async function (fastify) {
   fastify.route({
     method: "GET",
     url: "/validate",
-    preHandler: [verifyApplicationUnitPreHandler],
+    preHandler: [verifyApplicationUnitPreHandler, verifyTokenPreHandler],
     schema: validateTokenJsonSchema,
     handler: async function (request, reply) {
       const token = request?.headers?.["x-auth-token"];

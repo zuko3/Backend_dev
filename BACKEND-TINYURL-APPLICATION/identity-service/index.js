@@ -6,13 +6,14 @@ import { dirname, join } from "path";
 import { dbConfig } from "./configs/dbconfig.js";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import errorPlugin from "./plugin/error-plugin.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const fastify = Fastify({ logger: true });
-
 fastify.register(fastifyPostgres, dbConfig);
+fastify.register(errorPlugin);
 
 fastify.register(fastifySwagger);
 fastify.register(fastifySwaggerUi, {
@@ -27,7 +28,7 @@ fastify.register(fastifySwaggerUi, {
 
 fastify.register(autoLoad, {
   dir: join(__dirname, "routes"),
-  options: { prefix: "/auth-service" },
+  options: { prefix: "/identity-service" },
 });
 
 fastify.listen({ port: 8001, host: "127.0.0.1" }, (err, address) => {
