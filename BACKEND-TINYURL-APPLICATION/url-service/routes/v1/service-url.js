@@ -1,13 +1,13 @@
-import handleRedirect from "../handler/handle-redirect.js";
-import handleShorten from "../handler/handle-shorten.js";
-import { shortnerSchema, redirectSchema } from "../schema/index.js";
+import handleRedirect from "../../handler/handle-redirect.js";
+import handleShorten from "../../handler/handle-shorten.js";
+import { shortner_schema, redirect_schema } from "../../schema.js";
 
 export default async function (fastify) {
   fastify.route({
     method: "POST",
     url: "/short",
     preHandler: [],
-    schema: shortnerSchema,
+    schema: shortner_schema,
     handler: handleShorten,
   });
 
@@ -15,7 +15,7 @@ export default async function (fastify) {
     method: "GET",
     url: "/:short_key",
     preHandler: [],
-    schema: redirectSchema,
+    schema: redirect_schema,
     handler: handleRedirect,
   });
 }
