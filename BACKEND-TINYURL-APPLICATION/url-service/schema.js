@@ -1,15 +1,4 @@
-const header_schema = {
-  headers: {
-    type: "object",
-    properties: {
-      "x-com": { type: "string" },
-    },
-    required: ["x-com"],
-  },
-};
-
 const redirect_schema = {
-  ...header_schema,
   body: {
     type: "object",
     properties: {
@@ -32,7 +21,6 @@ const redirect_schema = {
 };
 
 const shortner_schema = {
-  ...header_schema,
   params: {
     type: "object",
     properties: {

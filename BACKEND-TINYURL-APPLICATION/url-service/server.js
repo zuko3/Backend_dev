@@ -6,18 +6,20 @@ import { dirname, join } from "path";
 import { dbConfig } from "./configs/dbconfig.js";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import errorPlugin from "./plugin/error-plugin.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const fastify = Fastify({ logger: true });
 
+fastify.register(errorPlugin);
 fastify.register(fastifyPostgres, dbConfig);
 
 fastify.register(fastifySwagger);
 fastify.register(fastifySwaggerUi, {
   theme: {
-    title: "Auth service swagger",
+    title: "url service swagger",
   },
   routePrefix: "/documentation",
   uiConfig: {
@@ -27,10 +29,10 @@ fastify.register(fastifySwaggerUi, {
 
 fastify.register(autoLoad, {
   dir: join(__dirname, "routes"),
-  options: { prefix: "/auth-service" },
+  options: { prefix: "/url-service" },
 });
 
-fastify.listen({ port: 8001, host: "127.0.0.1" }, (err, address) => {
+fastify.listen({ port: 8002, host: "127.0.0.1" }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);

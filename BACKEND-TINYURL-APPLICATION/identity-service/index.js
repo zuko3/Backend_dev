@@ -18,7 +18,7 @@ fastify.register(errorPlugin);
 fastify.register(fastifySwagger);
 fastify.register(fastifySwaggerUi, {
   theme: {
-    title: "Auth service swagger",
+    title: "identity service swagger",
   },
   routePrefix: "/documentation",
   uiConfig: {
