@@ -1,4 +1,5 @@
 import fp from "fastify-plugin";
+import { StatusCodes } from "http-status-codes";
 
 export default fp(function (fastify, option, done) {
   fastify.setErrorHandler(function (error, _request, reply) {
@@ -26,8 +27,8 @@ export default fp(function (fastify, option, done) {
     //   sendLog: true,
     // });
 
-    reply.status(statusCode).send({
-      statusCode: statusCode,
+    reply.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       message: error.message,
       ...(process.env.NODE_ENV === "development" && { stack: error.stack }),
     });
