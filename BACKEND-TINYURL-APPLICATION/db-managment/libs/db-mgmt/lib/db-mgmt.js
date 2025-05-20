@@ -1,5 +1,5 @@
-import runCronjobs from "@db-managment/cronjob";
-import migrate from "@db-managment/dbmigrate";
+import { runCronjobs } from "@db-managment/cronjob";
+import { migrate } from "@db-managment/dbmigrate";
 
 function dbMgmt(action, type) {
   if (action === "migrate") {
