@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { ReasonPhrases } from "http-status-codes";
 
-async function verifyTokenPreHandler(request) {
+async function verifyToken(request) {
   const token = request?.headers?.["x-auth-token"];
   if (!token) {
     throw new Error(ReasonPhrases.UNAUTHORIZED);
@@ -16,7 +16,7 @@ async function verifyTokenPreHandler(request) {
   }
 }
 
-async function verifyApplicationUnitPreHandler(request) {
+async function verifyApplicationUnit(request) {
   const x_com_name = request?.headers?.["x-com"];
   const ALLOWED_X_COM = process.env.ALLOWED_X_COM.split(",");
   if (!x_com_name) {
@@ -27,4 +27,4 @@ async function verifyApplicationUnitPreHandler(request) {
   }
 }
 
-export { verifyTokenPreHandler, verifyApplicationUnitPreHandler };
+export { verifyToken, verifyApplicationUnit };

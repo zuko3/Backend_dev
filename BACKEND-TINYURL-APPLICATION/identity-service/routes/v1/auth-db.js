@@ -1,15 +1,15 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { loginJsonSchema, signupJsonSchema } from "../../schema.js";
-import { verifyApplicationUnitPreHandler } from "../../validator.js";
+import { log_in, sign_up } from "../../schema.js";
+import { verifyApplicationUnit } from "../../validator.js";
 
 export default async function (fastify) {
   fastify.route({
     method: "POST",
     url: "/signup",
-    preHandler: [verifyApplicationUnitPreHandler],
-    schema: signupJsonSchema,
+    preHandler: [verifyApplicationUnit],
+    schema: sign_up,
     handler: async function (request, reply) {
       let client = null;
       try {
@@ -37,8 +37,8 @@ export default async function (fastify) {
   fastify.route({
     method: "POST",
     url: "/login",
-    preHandler: [verifyApplicationUnitPreHandler],
-    schema: loginJsonSchema,
+    preHandler: [verifyApplicationUnit],
+    schema: log_in,
     handler: async function (request, reply) {
       let client = null;
       try {

@@ -1,7 +1,5 @@
 import { deleteExpiredEntries } from "../jobs/deleteExpiredEntries.js";
 
-function runCronjobs() {
+export function runCronjobs() {
   deleteExpiredEntries();
 }
-
-runCronjobs();

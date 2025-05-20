@@ -1,4 +1,4 @@
-const validateTokenJsonSchema = {
+const validate_token = {
   headers: {
     type: "object",
     properties: {
@@ -17,7 +17,7 @@ const validateTokenJsonSchema = {
   },
 };
 
-const signupJsonSchema = {
+const sign_up = {
   headers: {
     type: "object",
     properties: {
@@ -54,7 +54,7 @@ const signupJsonSchema = {
   },
 };
 
-const loginJsonSchema = {
+const log_in = {
   headers: {
     type: "object",
     properties: {
@@ -90,7 +90,7 @@ const loginJsonSchema = {
   },
 };
 
-const healthCheckJsonSchema = {
+const health_check = {
   headers: {
     type: "object",
     properties: {
@@ -108,9 +108,4 @@ const healthCheckJsonSchema = {
   },
 };
 
-export {
-  validateTokenJsonSchema,
-  signupJsonSchema,
-  loginJsonSchema,
-  healthCheckJsonSchema,
-};
+export { validate_token, sign_up, log_in, health_check };
