@@ -13,8 +13,13 @@ const __dirname = dirname(__filename);
 
 const fastify = Fastify({ logger: true });
 
-fastify.register(errorPlugin);
 fastify.register(fastifyPostgres, dbConfig);
+fastify.register(errorPlugin);
+
+fastify.decorateRequest("fastify", null);
+fastify.addHook("onRequest", async (req) => {
+  req.fastify = fastify;
+});
 
 fastify.register(fastifySwagger);
 fastify.register(fastifySwaggerUi, {

@@ -5,7 +5,7 @@ const server = Fastify({ logger: true });
 
 server.register(proxy, {
   upstream: "http://127.0.0.1:8001/identity-service/v1/",
-  prefix: "/auth-serv",
+  prefix: "/auth-service",
   http2: false,
   replyOptions: {
     rewriteRequestHeaders: (_originalReq, headers) => ({
@@ -17,7 +17,7 @@ server.register(proxy, {
 
 server.register(proxy, {
   upstream: "http://127.0.0.1:8002/url-service/v1/",
-  prefix: "/url-serv",
+  prefix: "/url-service",
   http2: false,
   replyOptions: {
     rewriteRequestHeaders: (_originalReq, headers) => ({
