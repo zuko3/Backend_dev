@@ -1,12 +1,12 @@
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { healthCheckJsonSchema } from "../../schema.js";
+import { health_check } from "../../schema.js";
 
 export default async function (fastify) {
   fastify.route({
     method: "GET",
     url: "/ping",
     preHandler: [],
-    schema: healthCheckJsonSchema,
+    schema: health_check,
     handler: async function (_request, reply) {
       return reply.status(StatusCodes.OK).send({ message: ReasonPhrases.OK });
     },

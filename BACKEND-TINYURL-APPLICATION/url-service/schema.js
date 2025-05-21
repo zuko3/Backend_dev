@@ -1,4 +1,4 @@
-const redirect_schema = {
+const shortner_schema = {
   body: {
     type: "object",
     properties: {
@@ -20,7 +20,7 @@ const redirect_schema = {
   },
 };
 
-const shortner_schema = {
+const redirect_schema = {
   params: {
     type: "object",
     properties: {
@@ -29,4 +29,15 @@ const shortner_schema = {
   },
 };
 
-export { redirect_schema, shortner_schema };
+const health_check = {
+  response: {
+    "2xx": {
+      type: "object",
+      properties: {
+        message: { type: "string" },
+      },
+    },
+  },
+};
+
+export { redirect_schema, shortner_schema, health_check };
