@@ -47,6 +47,7 @@ https://www.npmjs.com/package/@fastify/autoload
 https://www.npmjs.com/package/@fastify/postgres
 https://www.npmjs.com/package/fastify-plugin
 https://www.npmjs.com/package/@fastify/http-proxy
+https://github.com/fastify/fastify-http-proxy
 
 # Additional package
 

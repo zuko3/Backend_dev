@@ -1,4 +1,11 @@
 const shortner_schema = {
+  headers: {
+    type: "object",
+    properties: {
+      "x-com": { type: "string" },
+    },
+    required: ["x-com"],
+  },
   body: {
     type: "object",
     properties: {
@@ -21,6 +28,13 @@ const shortner_schema = {
 };
 
 const redirect_schema = {
+  headers: {
+    type: "object",
+    properties: {
+      "x-com": { type: "string" },
+    },
+    required: ["x-com"],
+  },
   params: {
     type: "object",
     properties: {
@@ -30,6 +44,13 @@ const redirect_schema = {
 };
 
 const health_check = {
+  headers: {
+    type: "object",
+    properties: {
+      "x-com": { type: "string" },
+    },
+    required: ["x-com"],
+  },
   response: {
     "2xx": {
       type: "object",
