@@ -13,7 +13,9 @@ const __dirname = dirname(__filename);
 
 const fastify = Fastify({ logger: true });
 
+//This adds pg instance to fastify
 fastify.register(fastifyPostgres, dbConfig);
+
 fastify.register(errorPlugin);
 
 fastify.decorateRequest("fastify", null);
