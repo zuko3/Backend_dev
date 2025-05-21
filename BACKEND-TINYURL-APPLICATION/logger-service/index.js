@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createClient } from "redis";
 import { createLogger, format, transports } from "winston";
 import Transport from "winston-transport";
 import {
@@ -69,4 +70,22 @@ const logger = createLogger({
   ],
 });
 
-export default logger;
+function subscriber() {
+  const subscribe = createClient(6379, "127.0.0.1");
+  function listner(message) {
+    console.log("> Message Received:", message);
+  }
+
+  subscribe.on("error", function (err) {
+    console.log("Logger service Error:", err);
+  });
+  subscribe.on("connect", function () {
+    console.log("Logger service Connected ..");
+  });
+
+  subscribe.subscribe(process.env.LOG_CHANNEL_NAME, listner);
+
+  subscribe.connect();
+}
+
+subscriber();

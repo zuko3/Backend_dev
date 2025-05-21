@@ -39,10 +39,9 @@ fastify.register(autoLoad, {
   options: { prefix: "/url-service" },
 });
 
-fastify.listen({ port: 8002, host: "127.0.0.1" }, (err, address) => {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-  fastify.log.info(`Server listening at ${address}`);
-});
+try {
+  await fastify.listen({ port: 8002, host: "127.0.0.1" });
+} catch (err) {
+  fastify.log.error(err);
+  process.exit(1);
+}

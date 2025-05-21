@@ -143,3 +143,7 @@ curl --request POST \
 "email": "test@gmail.com",
 "password": "test123"
 }'
+
+# Install redis with docker
+
+docker run -d --name redis -p 6379:6379 redis
