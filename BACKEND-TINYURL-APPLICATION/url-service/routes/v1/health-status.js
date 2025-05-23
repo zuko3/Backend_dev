@@ -10,7 +10,16 @@ export default async function (fastify) {
     preHandler: [verifyApplicationUnit],
     schema: health_check,
     handler: async function (_request, reply) {
-      publish({ msg: "hello redis" });
+      publish({
+        type: "INFO",
+        tag: "HEALTH_CHECK",
+        metadata: {
+          service: "url-service",
+          url: "/ping",
+          handler: "healthCheckHandler",
+        },
+        sendLog: true,
+      });
       return reply.status(StatusCodes.OK).send({ message: ReasonPhrases.OK });
     },
   });
