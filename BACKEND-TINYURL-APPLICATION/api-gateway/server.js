@@ -15,7 +15,7 @@ server.addHook("onRequest", (request, reply, done) => {
 });
 
 server.register(proxy, {
-  upstream: "http://127.0.0.1:8001/identity-service/v1/",
+  upstream: `${process.env.IDENTITY_SERVICE_URL}/identity-service/v1/`,
   prefix: "/auth-service",
   http2: false,
   replyOptions: {
@@ -27,7 +27,7 @@ server.register(proxy, {
 });
 
 server.register(proxy, {
-  upstream: "http://127.0.0.1:8002/url-service/v1/",
+  upstream: `${process.env.URL_SERVICE}/url-service/v1/`,
   prefix: "/url-service",
   http2: false,
   replyOptions: {
@@ -38,7 +38,7 @@ server.register(proxy, {
   },
 });
 
-server.listen({ port: 8000, host: "127.0.0.1" }, (err, address) => {
+server.listen({ port: 8000, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     server.log.error(err);
     process.exit(1);

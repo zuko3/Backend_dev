@@ -31,7 +31,7 @@ fastify.register(autoLoad, {
   options: { prefix: "/identity-service" },
 });
 
-fastify.listen({ port: 8001, host: "127.0.0.1" }, (err, address) => {
+fastify.listen({ port: 8001, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);

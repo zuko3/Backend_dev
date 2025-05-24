@@ -1,6 +1,8 @@
 import { createClient } from "redis";
 
-const publisher = createClient(6379, "127.0.0.1");
+const publisher = createClient({
+  url: process.env.REDIS_URL,
+});
 
 export async function publish(event) {
   if (!publisher.isOpen) {

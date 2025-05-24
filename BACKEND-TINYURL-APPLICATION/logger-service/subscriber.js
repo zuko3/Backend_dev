@@ -1,7 +1,9 @@
 import logger from "./logger.js";
 import { createClient } from "redis";
 
-const subscribe = createClient(6379, "127.0.0.1");
+const subscribe = createClient({
+  url: process.env.REDIS_URL,
+});
 
 function messageListener(message) {
   try {
