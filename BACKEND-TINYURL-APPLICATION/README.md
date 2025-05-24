@@ -49,6 +49,11 @@ https://www.npmjs.com/package/fastify-plugin
 https://www.npmjs.com/package/@fastify/http-proxy
 https://github.com/fastify/fastify-http-proxy
 
+# Fastify Http-proxy
+
+- https://github.com/fastify/fastify-http-proxy
+- https://www.npmjs.com/package/@fastify/http-proxy
+
 # Additional package
 
 https://www.npmjs.com/package/@fastify/request-context
@@ -107,43 +112,59 @@ https://stackoverflow.com/questions/31552125/defining-an-array-as-an-environment
 
 https://fastify.dev/docs/latest/Reference/Routes/#route-prefixing
 
-# CURL REQUEST
+# Install redis with docker
 
-curl --request GET \
- --url http://127.0.0.1:8000/api/v1/ping \
- --header 'Content-Type: application/json' \
- --header 'User-Agent: insomnia/9.3.3'
+docker run -d --name redis -p 6379:6379 redis
+
+# Sample Env file
+
+host= 127.0.0.1
+port= 5432
+user= postgres
+password= rahul
+database= auth_app
+connectionString= postgres://postgres:rahul@localhost/auth_app
+NODE_ENV=development
+ALLOWED_X_COM = x_url_serv,x_url_service
+LOG_CHANNEL_NAME = "LOG_REDIS_CHANNEL"
+
+# Run Migrations
+
+npm run run:migration
+
+# Curl Requests
 
 curl --request POST \
- --url http://127.0.0.1:8000/api/v1/url/short \
+ --url http://127.0.0.1:8000/auth-service/login \
+ --header 'Content-Type: application/json' \
+ --header 'User-Agent: insomnia/11.0.0' \
+ --data '{
+"email": "rahul@gmail.com",
+"password": "password123"
+}'
+
+curl --request POST \
+ --url http://127.0.0.1:8000/url-service/short \
  --header 'Content-Type: application/json' \
  --header 'User-Agent: insomnia/10.3.0' \
- --header 'x-com: tiny-app' \
  --data '{
 "long*url":"https://www.amazon.in/l/29657746031/?_encoding=UTF8&pd_rd_w=6xDYc&content-id=amzn1.sym.f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_p=f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_r=F7YQ44DZHGPD9QPSQ419&pd_rd_wg=HpIRD&pd_rd_r=e99fd196-fb03-42c5-9338-965fa8434dd4&ref*=pd_hp_d_hero_unk",
 "expiry_date": "2030-02-23T12:17:00Z"
 }'
 
-curl --request GET \
- --url http://127.0.0.1:8000/api/v1/url/eenA \
- --header 'User-Agent: insomnia/10.3.0' \
- --header 'x-com: aa'
-
-curl --request GET \
- --url http://127.0.0.1:8000/api/v1/auth/ping \
- --header 'User-Agent: insomnia/11.0.0' \
- --header 'x-com: some-orchestrator'
-
 curl --request POST \
- --url http://127.0.0.1:8000/api/v1/auth/login \
+ --url http://127.0.0.1:8000/url-service/short \
  --header 'Content-Type: application/json' \
- --header 'User-Agent: insomnia/11.0.0' \
- --header 'x-com: some-orchestrator' \
+ --header 'User-Agent: insomnia/10.3.0' \
  --data '{
-"email": "test@gmail.com",
-"password": "test123"
+"long*url":"https://www.amazon.in/l/29657746031/?_encoding=UTF8&pd_rd_w=6xDYc&content-id=amzn1.sym.f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_p=f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_r=F7YQ44DZHGPD9QPSQ419&pd_rd_wg=HpIRD&pd_rd_r=e99fd196-fb03-42c5-9338-965fa8434dd4&ref*=pd_hp_d_hero_unk",
+"expiry_date": "2030-02-23T12:17:00Z"
 }'
 
-# Install redis with docker
+# swagger
 
-docker run -d --name redis -p 6379:6379 redis
+- identity service
+  http://127.0.0.1:8001/documentation
+
+- url service
+  http://127.0.0.1:8002/documentation

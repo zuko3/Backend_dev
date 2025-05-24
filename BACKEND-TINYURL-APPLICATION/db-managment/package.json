@@ -9,9 +9,9 @@
     ]
   },
   "scripts": {
-    "run:migration": "node libs/db-mgmt/lib/db-mgmt.js migrate do",
-    "run:undomigration": "node libs/db-mgmt/lib/db-mgmt.js migrate undo",
-    "run:cronjob": "node libs/db-mgmt/lib/db-mgmt.js runcronjob"
+    "run:migration": "node --env-file .development.env libs/db-mgmt/lib/db-mgmt.js migrate do",
+    "run:undomigration": "node --env-file .development.env libs/db-mgmt/lib/db-mgmt.js migrate undo",
+    "run:cronjob": "node --env-file .development.env libs/db-mgmt/lib/db-mgmt.js runcronjob"
   },
   "dependencies": {
     "@fastify/postgres": "^6.0.2"

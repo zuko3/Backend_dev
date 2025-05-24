@@ -12,9 +12,8 @@ export default async function (fastify) {
     handler: async function (_request, reply) {
       publish({
         type: "INFO",
-        tag: "HEALTH_CHECK",
+        tag: "URL_SERVICE",
         metadata: {
-          service: "url-service",
           url: "/ping",
           handler: "healthCheckHandler",
         },

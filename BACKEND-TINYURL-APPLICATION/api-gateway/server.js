@@ -1,7 +1,18 @@
 import Fastify from "fastify";
 import proxy from "@fastify/http-proxy";
+import { publish } from "./publisher.js";
 
 const server = Fastify({ logger: true });
+
+server.addHook("onRequest", (request, reply, done) => {
+  publish({
+    type: "INFO",
+    tag: "API_GATEWAY",
+    metadata: {},
+    sendLog: true,
+  });
+  done();
+});
 
 server.register(proxy, {
   upstream: "http://127.0.0.1:8001/identity-service/v1/",

@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { log_in, sign_up } from "../../schema.js";
 import { verifyApplicationUnit } from "../../validator.js";
+import { publish } from "../../publisher.js";
 
 export default async function (fastify) {
   fastify.route({
@@ -25,8 +26,27 @@ export default async function (fastify) {
           user: { email: email, name: name },
           message: ReasonPhrases.CREATED,
         };
+        publish({
+          type: "INFO",
+          tag: "AUTH_SERVICE",
+          metadata: {
+            url: "/signup",
+            handler: "signupHandler",
+          },
+          sendLog: true,
+        });
         return reply.status(StatusCodes.CREATED).send(response);
       } catch (err) {
+        publish({
+          type: "INFO",
+          tag: "AUTH_SERVICE",
+          metadata: {
+            url: "/signup",
+            handler: "signupHandler",
+            error: err,
+          },
+          sendLog: true,
+        });
         throw new Error(err);
       } finally {
         client?.release();
@@ -70,6 +90,15 @@ export default async function (fastify) {
           user: { email: user.email, name: user.name },
           authToken,
         };
+        publish({
+          type: "INFO",
+          tag: "AUTH_SERVICE",
+          metadata: {
+            url: "/login",
+            handler: "loginHandler",
+          },
+          sendLog: true,
+        });
         return reply.status(StatusCodes.OK).send(response);
       } catch (err) {
         throw new Error(err);

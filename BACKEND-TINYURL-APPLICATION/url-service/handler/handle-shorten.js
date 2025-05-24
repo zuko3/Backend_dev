@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import crypto from "crypto";
 import { decimalToBase62 } from "../utils/decimalToBase.js";
+import { publish } from "../publisher.js";
 
 export default async function (request, reply) {
   let client = null;
@@ -26,6 +27,20 @@ export default async function (request, reply) {
       "INSERT into tableurls (short_url, long_url, expiry_date,created_at) VALUES($1,$2,$3,$4) RETURNING short_url, long_url, expiry_date,created_at",
       [base62ShortUrl, long_url, expiry_date, createdAt]
     );
+
+    publish({
+      type: "INFO",
+      tag: "URL_SERVICE",
+      metadata: {
+        url: "/short",
+        handler: "handleShorten",
+        base62ShortUrl,
+        long_url,
+        expiry_date,
+        createdAt,
+      },
+      sendLog: true,
+    });
 
     reply.status(StatusCodes.CREATED).send({
       short_url: base62ShortUrl,
