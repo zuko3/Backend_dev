@@ -5,6 +5,11 @@ services:
       - "5433:5432"
     environment:
       POSTGRES_PASSWORD: "secret"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:latest
@@ -15,7 +20,8 @@ services:
     build: ./db-managment
     env_file: ./db-managment/.development.env
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   logger-service:
     build: ./logger-service

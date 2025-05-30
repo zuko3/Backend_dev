@@ -132,35 +132,6 @@ LOG_CHANNEL_NAME = "LOG_REDIS_CHANNEL"
 
 npm run run:migration
 
-# Curl Requests
-
-curl --request POST \
- --url http://127.0.0.1:8000/auth-service/login \
- --header 'Content-Type: application/json' \
- --header 'User-Agent: insomnia/11.0.0' \
- --data '{
-"email": "rahul@gmail.com",
-"password": "password123"
-}'
-
-curl --request POST \
- --url http://127.0.0.1:8000/url-service/short \
- --header 'Content-Type: application/json' \
- --header 'User-Agent: insomnia/10.3.0' \
- --data '{
-"long*url":"https://www.amazon.in/l/29657746031/?_encoding=UTF8&pd_rd_w=6xDYc&content-id=amzn1.sym.f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_p=f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_r=F7YQ44DZHGPD9QPSQ419&pd_rd_wg=HpIRD&pd_rd_r=e99fd196-fb03-42c5-9338-965fa8434dd4&ref*=pd_hp_d_hero_unk",
-"expiry_date": "2030-02-23T12:17:00Z"
-}'
-
-curl --request POST \
- --url http://127.0.0.1:8000/url-service/short \
- --header 'Content-Type: application/json' \
- --header 'User-Agent: insomnia/10.3.0' \
- --data '{
-"long*url":"https://www.amazon.in/l/29657746031/?_encoding=UTF8&pd_rd_w=6xDYc&content-id=amzn1.sym.f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_p=f40d7b8b-b6c2-45d4-8bca-086ac17ffbc4&pf_rd_r=F7YQ44DZHGPD9QPSQ419&pd_rd_wg=HpIRD&pd_rd_r=e99fd196-fb03-42c5-9338-965fa8434dd4&ref*=pd_hp_d_hero_unk",
-"expiry_date": "2030-02-23T12:17:00Z"
-}'
-
 # swagger
 
 - identity service
@@ -168,3 +139,26 @@ curl --request POST \
 
 - url service
   http://127.0.0.1:8002/documentation
+
+# Retry mechanism for Connecting to postgres
+
+Establishing a reliable connection to a PostgreSQL database within a Docker Compose setup often requires implementing retry mechanisms.
+
+Health Checks: Docker Compose allows you to define health checks for containers. By configuring a health check for the PostgreSQL container, you can ensure that dependent services only start when the database is deemed healthy.
+
+    services:
+      db:
+        image: postgres:latest
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U postgres"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+        ...
+      web:
+        ...
+        depends_on:
+          db:
+            condition: service_healthy
+
+# CURL Requests
