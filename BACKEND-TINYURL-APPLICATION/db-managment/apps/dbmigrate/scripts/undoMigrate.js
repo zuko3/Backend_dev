@@ -3,14 +3,12 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import pg from "pg";
 
-//TODO: Will move to some config file
 const dbConfig = {
   host: process.env.host,
   port: process.env.port,
   user: process.env.user,
   password: process.env.password,
   database: process.env.database,
-  connectionString: process.env.connectionString,
 };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

@@ -1,8 +1,21 @@
 services:
+  postgres:
+    image: postgres:14
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: "secret"
+
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
+
+  db-managment:
+    build: ./db-managment
+    env_file: ./db-managment/.development.env
+    depends_on:
+      - postgres
 
   logger-service:
     build: ./logger-service
@@ -26,6 +39,8 @@ services:
     env_file: ./identity-service/.development.env
     depends_on:
       - redis
+      - postgres
+      - db-managment
       - api-gateway
       - logger-service
 
@@ -36,6 +51,8 @@ services:
     env_file: ./url-service/.development.env
     depends_on:
       - redis
+      - postgres
+      - db-managment
       - api-gateway
       - identity-service
       - logger-service
