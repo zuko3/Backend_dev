@@ -1,6 +1,6 @@
 ## HOW TO GUIDE
 
-# Setting learna backend project
+# Setting lerna backend project
 
 1. Create a folder named project_name
 2. cd project_name
