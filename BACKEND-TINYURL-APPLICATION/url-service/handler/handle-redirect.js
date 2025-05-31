@@ -1,11 +1,16 @@
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 import { publish } from "../publisher.js";
+import { redisLookUp, redisLookUpSet } from "../redisLookup.js";
 
 export default async function (request, reply) {
   let client = null;
   try {
     client = await request.fastify.pg.connect();
     const { short_key } = request.params;
+    const long_url = await redisLookUp(short_key);
+    if (long_url) {
+      return reply.status(StatusCodes.PERMANENT_REDIRECT).redirect(long_url);
+    }
     const { rows } = await client.query(
       "SELECT long_url from tableurls where short_url=$1",
       [short_key]
@@ -35,7 +40,10 @@ export default async function (request, reply) {
       },
       sendLog: true,
     });
-    reply.status(StatusCodes.PERMANENT_REDIRECT).redirect(rows[0].long_url);
+    await redisLookUpSet(short_key, rows[0].long_url);
+    return reply
+      .status(StatusCodes.PERMANENT_REDIRECT)
+      .redirect(rows[0].long_url);
   } catch (err) {
     publish({
       type: "ERROR",
