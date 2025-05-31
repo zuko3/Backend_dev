@@ -23,21 +23,25 @@
 
 # Add learna Inside apps and libs folders
 
+```
 npx lerna create @project_name/auth-lib libs
 npx lerna create @project_name/urls-lib libs
 
 npx lerna create @project_name/cronjob-app apps
 npx lerna create @project_name/logger-app apps
 npx lerna create @project_name/dbmigrate-app apps
+```
 
 # Install dependency
 
+```
 npm i fastify
 npm i axios
 npm i http-status-codes
 npm i @fastify/postgres
 npm i @fastify/autoload
 npm i fastify-plugin
+```
 
 # Important packages
 
