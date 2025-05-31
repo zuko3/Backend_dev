@@ -172,11 +172,13 @@ Health Checks: Docker Compose allows you to define health checks for containers.
 
 # Swagger Docs Link
 
-- identity service
-- http://127.0.0.1:8001/documentation
+```
+identity service
+http://127.0.0.1:8001/documentation
 
-- url service
-- http://127.0.0.1:8002/documentation
+url service
+http://127.0.0.1:8002/documentation
+```
 
 # Curl Requests
 
