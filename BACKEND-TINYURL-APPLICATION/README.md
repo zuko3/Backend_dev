@@ -41,13 +41,13 @@ npm i fastify-plugin
 
 # Important packages
 
-https://www.npmjs.com/package/axios
-https://www.npmjs.com/package/http-status-codes
-https://www.npmjs.com/package/@fastify/autoload
-https://www.npmjs.com/package/@fastify/postgres
-https://www.npmjs.com/package/fastify-plugin
-https://www.npmjs.com/package/@fastify/http-proxy
-https://github.com/fastify/fastify-http-proxy
+- https://www.npmjs.com/package/axios
+- https://www.npmjs.com/package/http-status-codes
+- https://www.npmjs.com/package/@fastify/autoload
+- https://www.npmjs.com/package/@fastify/postgres
+- https://www.npmjs.com/package/fastify-plugin
+- https://www.npmjs.com/package/@fastify/http-proxy
+- https://github.com/fastify/fastify-http-proxy
 
 # Fastify Http-proxy
 
@@ -56,8 +56,8 @@ https://github.com/fastify/fastify-http-proxy
 
 # Additional package
 
-https://www.npmjs.com/package/@fastify/request-context
-https://www.npmjs.com/package/@fastify/error
+- https://www.npmjs.com/package/@fastify/request-context
+- https://www.npmjs.com/package/@fastify/error
 
 # Add local dependency
 
@@ -78,7 +78,7 @@ Create a .development.env File
   }
 ```
 
-npm run start:dev
+- npm run start:dev
 
 # NOTES
 
@@ -93,22 +93,22 @@ fastify.register(autoLoad, {
 
 # Loggging
 
-https://www.npmjs.com/package/winston
-https://www.npmjs.com/package/winston-transport
+- https://www.npmjs.com/package/winston
+- https://www.npmjs.com/package/winston-transport
 
 # DB MIGRATIONS
 
-https://www.npmjs.com/package/postgrator
+- https://www.npmjs.com/package/postgrator
 
 The files must follow the convention [version].[action].[optional-description].sql or [version].[action].[optional-description].js (or .mjs, .cjs)
 
 # How to read environment variables from Node.js
 
-https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs
+- https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs
 
 # Define array of variable in env file
 
-https://stackoverflow.com/questions/31552125/defining-an-array-as-an-environment-variable-in-node-js
+- https://stackoverflow.com/questions/31552125/defining-an-array-as-an-environment-variable-in-node-js
 
 # Route Prefixing
 
@@ -120,6 +120,7 @@ docker run -d --name redis -p 6379:6379 redis
 
 # Sample ENV file
 
+```
 host= 127.0.0.1
 port= 5432
 user= postgres
@@ -128,6 +129,7 @@ database= auth_app
 NODE_ENV=development
 ALLOWED_X_COM = x_url_serv,x_url_service
 LOG_CHANNEL_NAME = "LOG_REDIS_CHANNEL"
+```
 
 # Run npm commands with Args
 
@@ -136,8 +138,9 @@ LOG_CHANNEL_NAME = "LOG_REDIS_CHANNEL"
 ```
 
 someFunc(process.argv[2], process.argv[3]);
-process.argv[2] === migrate
-process.argv[3] === do
+
+- process.argv[2] === migrate
+- process.argv[3] === do
 
 # Retry mechanism for Connecting to postgres
 
@@ -166,10 +169,10 @@ Health Checks: Docker Compose allows you to define health checks for containers.
 # Swagger Docs Link
 
 - identity service
-  http://127.0.0.1:8001/documentation
+- http://127.0.0.1:8001/documentation
 
 - url service
-  http://127.0.0.1:8002/documentation
+- http://127.0.0.1:8002/documentation
 
 # Curl Requests
 
