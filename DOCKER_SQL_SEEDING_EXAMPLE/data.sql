@@ -1,0 +1,1 @@
+INSERT INTO request_status(x_com, count) VALUES ('x-ping', 0);
