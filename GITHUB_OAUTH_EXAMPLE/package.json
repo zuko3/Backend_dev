@@ -1,0 +1,23 @@
+{
+  "name": "oauth-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "node --env-file .application.env server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/postgres": "^5.2.2",
+    "@fastify/request-context": "^5.1.0",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "fastify": "^4.25.2",
+    "jsonwebtoken": "^9.0.2",
+    "pino-pretty": "^10.3.1"
+  }
+}
