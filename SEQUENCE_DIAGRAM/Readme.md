@@ -71,3 +71,5 @@ Librarian        LibrarySystem        UserCredentialsDB        EmailSystem
 # Useful links
 
 https://mermaid.js.org/syntax/sequenceDiagram.html
+
+https://www.mermaidchart.com/play#pako:eNptj00OwiAQRq9C2BouwKJJE0-gCzfdIE6QpFLKj5vGu8sAUaSGzUzey3wfG5XLDSinHtYIRsJRC-XEYzKEWOGCltoKE0j04DwRvgw9vcB1tBZxmXo-xnA_g3tqCSg1a2_Oi1LgUCrTZNAo6WwYDjWAI9aZ1ewMm8OciLSc8Fc-oNd2YMlmn1NF9HEO7b2s5OAalhT7U6ZWzFg5WHcp_5Vv4T3FR19vB1ONsg
