@@ -84,6 +84,10 @@ Create a .development.env File
 
 - npm run start:dev
 
+# fastify-plugin
+  - every register call will create an encapsulated context
+  - every register + fastify-plugin will not create an encapsulated context: you will stay in the same context where the register was called
+
 # NOTES
 
 encapsulate (optional) - Defaults to 'true', if set to 'false' each plugin loaded is wrapped with fastify-plugin. This allows you to share contexts between plugins and the parent context
