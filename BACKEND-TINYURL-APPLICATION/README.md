@@ -64,6 +64,7 @@ npm i fastify-plugin
 - https://www.npmjs.com/package/@fastify/error
 - https://www.npmjs.com/package/dotenv
 - https://www.npmjs.com/package/jsonwebtoken
+- https://www.npmjs.com/package/bcrypt
 - https://www.npmjs.com/package/uuid
 - https://www.npmjs.com/package/nanoid
 - https://www.npmjs.com/package/nock
