@@ -14,8 +14,6 @@ debug, info, warn, error, or fatal
 
 - (node:6156) [FSTWRN002] FastifyWarning: The serverStatusRoutes plugin being registered mixes async and callback styles, which will result in an error in `fastify@5`
 
-- https://blog.devgenius.io/server-side-development-with-fastify-route-level-hooks-and-decorators-226f283c64fb
-
 # Uri concepts
 
 ```
