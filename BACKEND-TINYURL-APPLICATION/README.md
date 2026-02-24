@@ -62,6 +62,11 @@ npm i fastify-plugin
 
 - https://www.npmjs.com/package/@fastify/request-context
 - https://www.npmjs.com/package/@fastify/error
+- https://www.npmjs.com/package/dotenv
+- https://www.npmjs.com/package/jsonwebtoken
+- https://www.npmjs.com/package/uuid
+- https://www.npmjs.com/package/nanoid
+- https://www.npmjs.com/package/nock
 
 # Add local dependency
 
@@ -85,8 +90,9 @@ Create a .development.env File
 - npm run start:dev
 
 # fastify-plugin
-  - every register call will create an encapsulated context
-  - every register + fastify-plugin will not create an encapsulated context: you will stay in the same context where the register was called
+
+- every register call will create an encapsulated context
+- every register + fastify-plugin will not create an encapsulated context: you will stay in the same context where the register was called
 
 # NOTES
 
